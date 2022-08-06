@@ -9,6 +9,7 @@ in
       withNodeJs = true;
       plugins = with pkgs.vimPlugins; [
         { plugin = awesome-vim-colorschemes; }
+        { plugin = completion-nvim; }
         { plugin = gitsigns-nvim; }
         { plugin = toggleterm-nvim; }
         { plugin = fzf-vim; }

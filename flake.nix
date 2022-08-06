@@ -8,7 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    #nur.url = "github:nix-community/NUR";
   };
   outputs =
     { self, home-manager, nixpkgs, flake-utils, nur, ... }:
@@ -17,7 +16,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        #overlays = [ nur.overlay ];
         config = {
           allowUnsupportedSystem = true;
           allowUnfree = true;
@@ -29,12 +27,9 @@
         inherit pkgs;
 
         modules = [
-          #./modules/foot.nix
-          #./modules/kakoune.nix
-          #./modules/mpd.nix
+          ./modules/alacritty.nix
           ./modules/neovim.nix
           ./modules/packages.nix
-          #./modules/sway.nix
           ./home.nix
         ];
       };

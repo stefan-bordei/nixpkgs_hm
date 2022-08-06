@@ -22,10 +22,18 @@ opt.smartindent = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.clipboard = 'unnamed,unnamedplus'
+vim.cmd('set nohlsearch')
+vim.cmd('set title')
+vim.cmd('set hidden')
+vim.cmd('set nowrap')
+vim.cmd('set signcolumn=yes')
+vim.cmd('set colorcolumn=120')
+vim.cmd('set cursorline')
+vim.cmd('set termguicolors')
 
 map('', '<leader>c', '"+y')
 map('', '<F2>', ':w!<CR>')
-map('', '<F3>', ':NvimTreeToggle<CR>')
+map('', '<F3>', ':NERDTreeToggle<CR>')
 map('', '<F4>', ':bdelete<CR>')
 map('', '<F5>', ':bprevious<CR>')
 map('', '<F6>', ':bnext<CR>')
