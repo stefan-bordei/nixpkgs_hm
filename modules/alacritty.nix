@@ -5,7 +5,6 @@ in
 {
     programs.neovim = {
       enable = true;
-      ];
     }; # alacritty 
-    xdg.configFile."alacritty.yml".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/alacritty";
+    xdg.configFile."alacritty.yml".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/alacritty/alacritty.yml";
 }

@@ -36,7 +36,6 @@
     gh.enable = true;
     gitui.enable = true;
     lazygit.enable = true;
-    mpv.enable = true;
     neovim.enable = true;
   };
 
