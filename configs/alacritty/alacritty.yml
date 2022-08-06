@@ -65,6 +65,7 @@ colors:
     white:   '#fce8c3'
 
   transparent_background_colors: true
+  background_opacity: 0.6
 
 key_bindings:
   - { key: V,        mods: Control|Shift,    action: Paste               }
