@@ -20,6 +20,8 @@ in
         { plugin = nvim-lspconfig; }
         { plugin = nvim-tree-lua; }
         { plugin = nvim-treesitter; }
+        { plugin = nvim-cmp; }
+        { plugin = cmp-nvim-lsp; }
         { plugin = vim-nix; }
         { plugin = vim-pandoc-syntax; }
         { plugin = vim-pandoc; }

@@ -3,7 +3,7 @@ let
 in {
   home.packages = with pkgs; [
     # utilities
-    (python3.withPackages(p: with p; [ requests ]))
+    (python3.withPackages(p: with p; [ python-lsp-server  requests ]))
     asciinema
     htop
     glib # for gsettings
@@ -21,6 +21,11 @@ in {
     xdg-utils
     zenmonitor
     obsidian
+    
+    # lsp
+    clang
+    nodejs
+    nodePackages.pyright
 
     # password management
     #keepassxc

@@ -6,10 +6,10 @@ env:
 window:
   decorations: none
   padding:
-    x: 3
-    y: 3
+    x: 5
+    y: 5
 
-  opacity: 0.6
+  opacity: 0.7
 
   title: Alacritty
 
@@ -65,7 +65,6 @@ colors:
     white:   '#fce8c3'
 
   transparent_background_colors: true
-  background_opacity: 0.6
 
 key_bindings:
   - { key: V,        mods: Control|Shift,    action: Paste               }
