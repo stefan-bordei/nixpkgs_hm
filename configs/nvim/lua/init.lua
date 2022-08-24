@@ -30,6 +30,7 @@ vim.cmd('set signcolumn=yes')
 vim.cmd('set colorcolumn=120')
 vim.cmd('set cursorline')
 vim.cmd('set termguicolors')
+vim.cmd('set scrolloff=5')
 
 map('', '<leader>c', '"+y')
 map('', '<F2>', ':w!<CR>')
@@ -74,7 +75,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-local servers = { 'clangd', 'cmake', 'pyright' }
+local servers = { 'clangd', 'cmake', 'pyright', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -84,7 +85,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require'nvim-treesitter.install'.compilers = { 'clang++' } 
+--require'nvim-treesitter.install'.compilers = { 'clang++' } 
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -96,7 +97,7 @@ require('gitsigns').setup()
 require('toggleterm').setup()
 
 -- Use gruvbox colorscheme
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme base16-gruvbox-dark-hard")
 
 -- Use <Tab> and <S-Tab> to navigate through popup menu
 vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
@@ -137,15 +138,15 @@ cmp.setup({
 snippet = {
   -- REQUIRED - you must specify a snippet engine
   expand = function(args)
-    vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    --vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
     -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
   end,
 },
 window = {
    completion = cmp.config.window.bordered(),
-  -- documentation = cmp.config.window.bordered(),
+   documentation = cmp.config.window.bordered(),
 },
 mapping = cmp.mapping.preset.insert({
   ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -156,8 +157,8 @@ mapping = cmp.mapping.preset.insert({
 }),
 sources = cmp.config.sources({
   { name = 'nvim_lsp' },
-  { name = 'vsnip' }, -- For vsnip users.
-  -- { name = 'luasnip' }, -- For luasnip users.
+  -- { name = 'vsnip' }, -- For vsnip users.
+  { name = 'luasnip' }, -- For luasnip users.
   -- { name = 'ultisnips' }, -- For ultisnips users.
   -- { name = 'snippy' }, -- For snippy users.
 }, {
@@ -192,9 +193,32 @@ sources = cmp.config.sources({
 })
 })
 
+
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['pyright'].setup {
-capabilities = capabilities
+    capabilities = capabilities
 }
+require('lspconfig')['rust_analyzer'].setup {
+    capabilities = capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+}
+

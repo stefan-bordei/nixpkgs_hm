@@ -3,7 +3,7 @@ let
 in {
   home.packages = with pkgs; [
     # utilities
-    (python3.withPackages(p: with p; [ python-lsp-server  requests ]))
+    (python3.withPackages(p: with p; [ pip python-lsp-server requests numpy ]))
     asciinema
     htop
     glib # for gsettings
@@ -22,10 +22,15 @@ in {
     zenmonitor
     obsidian
     
+    # Rust
+    rustc
+    cargo
+
     # lsp
     clang
     nodejs
     nodePackages.pyright
+    rust-analyzer
 
     # password management
     #keepassxc
@@ -49,7 +54,7 @@ in {
     nomacs
 
     # messengers
-    discord
+    (discord.override { nss = pkgs.nss_latest; })
 
     # fonts
     b612

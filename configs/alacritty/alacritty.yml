@@ -20,10 +20,10 @@ window:
 window_opacity: 0.0
 font:
   normal:
-    family: JetBrains Mono
+    family: d2coding
     style:  Regular
 
-  size: 10.0
+  size: 11.0
 
 cursor:
   style:            Beam

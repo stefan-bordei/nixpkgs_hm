@@ -26,6 +26,9 @@ in
         { plugin = vim-pandoc-syntax; }
         { plugin = vim-pandoc; }
         { plugin = vimtex; }
+        { plugin = rust-tools-nvim; }
+        { plugin = luasnip; }
+        { plugin = nvim-jdtls; }
       ];
     }; # neovim 
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
