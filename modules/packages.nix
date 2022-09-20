@@ -32,8 +32,10 @@ in {
     nodePackages.pyright
     rust-analyzer
 
+    # telescope deps
+    ripgrep
+
     # password management
-    #keepassxc
     lxqt.lxqt-sudo
     lxqt.lxqt-policykit
 
@@ -52,6 +54,11 @@ in {
 
     # graphics
     nomacs
+
+    # games
+    lutris
+    piper
+    wine
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
@@ -74,7 +81,7 @@ in {
     libertine
     lmodern
     meslo-lg
-    noto-fonts-emoji
+    #noto-fonts-emoji
     fira-code-symbols
     overpass
     recursive

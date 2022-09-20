@@ -33,6 +33,8 @@
           ./home.nix
         ];
       };
+
+    
       zygot = self.homeConfigurations.zygot.activationPackage;
       defaultPackage.${system} = self.zygot;
     };

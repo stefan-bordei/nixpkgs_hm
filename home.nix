@@ -43,7 +43,11 @@
     EDITOR = "nvim";
     TCLLIBPATH = "$HOME/.local/share/tk-themes";
   };
-  services.gnome-keyring.enable = true;
-  services.picom.enable= true;
+
+  services = {
+    gnome-keyring.enable = true;
+    picom.enable= true;
+  };
+
   xdg.enable = true;
 }

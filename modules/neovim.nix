@@ -28,7 +28,8 @@ in
         { plugin = vimtex; }
         { plugin = rust-tools-nvim; }
         { plugin = luasnip; }
-        { plugin = nvim-jdtls; }
+        { plugin = telescope-nvim; }
+        { plugin = plenary-nvim; }
       ];
     }; # neovim 
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";

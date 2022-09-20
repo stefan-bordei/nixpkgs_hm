@@ -39,6 +39,10 @@ map('', '<F4>', ':bdelete<CR>')
 map('', '<F5>', ':bprevious<CR>')
 map('', '<F6>', ':bnext<CR>')
 
+-- telescope mapping
+map('', '<C-f>', ':Telescope find_files<CR>')
+map('', '<C-g>', ':Telescope live_grep<CR>')
+
 -- require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
 
 -- Use an on_attach function to only map the following keys
