@@ -25,6 +25,8 @@
     git = {
       enable = true;
       package = pkgs.gitFull;
+      userEmail = "stefan.bordei13@gmail.com";
+      userName = "stefan-bordei";
     };
 
     #  other programs

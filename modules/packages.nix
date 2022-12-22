@@ -28,8 +28,8 @@ in {
 
     # lsp
     clang
-    nodejs
-    nodePackages.pyright
+    #nodejs
+    #nodePackages.pyright
     rust-analyzer
 
     # telescope deps

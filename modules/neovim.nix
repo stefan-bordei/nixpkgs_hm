@@ -36,7 +36,7 @@ in
       ];
     }; # neovim 
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
-    xdg.configFile."nvim/colors".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/colors";
-    xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
-    programs.neovim.extraConfig = "lua require('init')";
+    xdg.configFile."nvim/after".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/after";
+    #xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
+    programs.neovim.extraConfig = "lua require('stefan')";
 }

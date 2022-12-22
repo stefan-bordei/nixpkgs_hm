@@ -11,7 +11,6 @@
   };
   outputs =
     { self, home-manager, nixpkgs, flake-utils, nur, ... }:
-    #flake-utils.lib.eachDefaultSystem (system:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -34,7 +33,6 @@
         ];
       };
 
-    
       zygot = self.homeConfigurations.zygot.activationPackage;
       defaultPackage.${system} = self.zygot;
     };

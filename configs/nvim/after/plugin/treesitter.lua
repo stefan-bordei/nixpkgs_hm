@@ -1,14 +1,14 @@
 require'nvim-treesitter.install'.compilers = { 'clang++' } 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "help", "python", "c", "lua", "rust" },
+  ensure_installed = { "help", "nix", "python", "c", "lua", "rust" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+  auto_install = false,
 
   highlight = {
     -- `false` will disable the whole extension
@@ -22,4 +22,4 @@ require'nvim-treesitter.configs'.setup {
   },
   parser_install_dir = "~/.config/nvim/treesitter/parsers",
 }
-vim.opt.runtimepath:append("!/.config/nvim/treesitter/parsers")
+vim.opt.runtimepath:append("~/.config/nvim/treesitter/parsers")
