@@ -19,6 +19,7 @@ opt.showcmd = true
 opt.incsearch = true
 opt.relativenumber = false 
 opt.smartindent = true
+opt.smarttab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.clipboard = 'unnamed,unnamedplus'
@@ -83,9 +84,9 @@ local servers = { 'clangd', 'cmake', 'pyright', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
+    --flags = {
+    --  debounce_text_changes = 150,
+    --}
   }
 end
 
@@ -94,7 +95,13 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
   },
+  indent = {
+    disable = { "python" },
+  },
+  parser_install_dir = "~/.config/nvim/treesitter/parsers",
 }
+vim.opt.runtimepath:append("~/.config/nvim/treesitter/parsers")
+
 require'lualine'.setup()
 require'nvim-tree'.setup()
 require('gitsigns').setup()
