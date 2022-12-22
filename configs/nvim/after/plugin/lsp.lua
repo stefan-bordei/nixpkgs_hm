@@ -1,10 +1,10 @@
 local lsp = require("lsp-zero")
 
+vim.opt.runtimepath:append("~/.local/share/nvim/mason/packages/")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
   'pyright',
-  'sumneko_lua',
   'rust_analyzer',
 })
 

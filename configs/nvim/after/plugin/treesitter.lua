@@ -1,4 +1,6 @@
-require'nvim-treesitter.install'.compilers = { 'clang++' } 
+local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitter"
+vim.opt.runtimepath:append("~/.config/nvim/treesitter/parsers/")
+require'nvim-treesitter.install'.compilers = { 'clang++' }
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "help", "nix", "python", "c", "lua", "rust" },
@@ -22,4 +24,3 @@ require'nvim-treesitter.configs'.setup {
   },
   parser_install_dir = "~/.config/nvim/treesitter/parsers",
 }
-vim.opt.runtimepath:append("~/.config/nvim/treesitter/parsers")

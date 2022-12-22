@@ -21,15 +21,15 @@ in {
     xdg-utils
     zenmonitor
     obsidian
-    
+
     # Rust
     rustc
     cargo
 
     # lsp
     clang
-    #nodejs
-    #nodePackages.pyright
+    nodejs
+    nodePackages.npm
     rust-analyzer
 
     # telescope deps
