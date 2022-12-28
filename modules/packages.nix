@@ -21,6 +21,7 @@ in {
     xdg-utils
     zenmonitor
     obsidian
+    nitrogen
 
     # Rust
     rustc
@@ -56,7 +57,6 @@ in {
     nomacs
 
     # games
-    lutris
     piper
     wine
 

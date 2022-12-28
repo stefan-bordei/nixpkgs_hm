@@ -19,6 +19,9 @@
           allowUnsupportedSystem = true;
           allowUnfree = true;
           allowBroken = true;
+          permittedInsecurePackages = [
+                "openjdk-18+36"
+              ];
         };
       };
     in {
@@ -27,6 +30,7 @@
 
         modules = [
           ./modules/alacritty.nix
+          #./modules/i3.nix
           ./modules/neovim.nix
           ./modules/packages.nix
           ./home.nix
@@ -37,4 +41,3 @@
       defaultPackage.${system} = self.zygot;
     };
 }
-
