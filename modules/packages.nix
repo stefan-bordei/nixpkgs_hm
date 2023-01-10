@@ -22,6 +22,7 @@ in {
     zenmonitor
     obsidian
     nitrogen
+    qmk
 
     # Rust
     rustc

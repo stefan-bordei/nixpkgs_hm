@@ -16,14 +16,19 @@ window:
   class:
     instance: Alacritty
     general:  Alacritty
-  
+
 window_opacity: 0.0
 font:
   normal:
-    family: d2coding
-    style:  Regular
+    #family: d2coding
+    #style:  Regular
+    family: hack
+    style: Regular
+    offset:
+      x: 0.0
+      y: 0.0
 
-  size: 13.0
+  size: 15.0
 
 cursor:
   style:            Beam

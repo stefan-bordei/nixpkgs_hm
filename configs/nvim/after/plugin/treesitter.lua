@@ -1,5 +1,5 @@
-local parser_install_dir = vim.fn.stdpath("cache") .. "~/.config/nvim/treesitter/"
-vim.opt.runtimepath:append(parser_install_dir)
+--local parser_install_dir = vim.fn.stdpath("cache") .. "~/.config/nvim/treesitter"
+--vim.opt.runtimepath:append(parser_install_dir)
 require'nvim-treesitter.install'.compilers = { 'clang++' }
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
@@ -15,6 +15,7 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
+    disable = {"rust"},
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -22,5 +23,6 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-  parser_install_dir = "~/.config/nvim/treesitter/parsers",
+  parser_install_dir = "~/.config/nvim/treesitter",
 }
+vim.opt.runtimepath:append("~/.config/nvim/treesitter/")
