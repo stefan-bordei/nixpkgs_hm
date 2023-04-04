@@ -1,4 +1,4 @@
-vim.cmd("colorscheme base16-gruvbox-dark-hard")
+vim.cmd("colorscheme base16-rose-pine")
 
 vim.opt.nu = true
 

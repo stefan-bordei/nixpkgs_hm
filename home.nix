@@ -21,12 +21,21 @@
     home-manager.enable = true;
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
-
+    powerline-go.enable = true;
+    bash = {
+      enable = true;
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
+    };
     git = {
       enable = true;
       package = pkgs.gitFull;
       userEmail = "stefan.bordei13@gmail.com";
       userName = "stefan-bordei";
+      extraConfig = {
+        core.editor = "vim";
+      };
     };
 
     #  other programs
