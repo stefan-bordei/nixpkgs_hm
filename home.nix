@@ -48,6 +48,7 @@
     gitui.enable = true;
     lazygit.enable = true;
     neovim.enable = true;
+    go.enable = true;
   };
 
   home.sessionVariables = {
