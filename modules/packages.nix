@@ -23,6 +23,7 @@ in {
     obsidian
     nitrogen
     qmk
+    gnumake
 
     # Rust
     rustc

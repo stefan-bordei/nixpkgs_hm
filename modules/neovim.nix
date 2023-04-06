@@ -1,5 +1,5 @@
-{ config, pkgs, libs, ... }: 
-let 
+{ config, pkgs, libs, ... }:
+let
   nixConfigDir = "${config.home.homeDirectory}/.config/nixpkgs";
 in
 {
@@ -11,19 +11,24 @@ in
       vimAlias=true;
       plugins = with pkgs.vimPlugins; [
         { plugin = awesome-vim-colorschemes; }
-        #{ plugin = completion-nvim; }
-        #{ plugin = gitsigns-nvim; }
-        #{ plugin = toggleterm-nvim; }
-        #{ plugin = fzf-vim; }
+        { plugin = completion-nvim; }
+        { plugin = gitsigns-nvim; }
+        { plugin = toggleterm-nvim; }
+        { plugin = fzf-vim; }
         { plugin = lazygit-nvim; }
         { plugin = lualine-nvim; }
         #{ plugin = nerdtree; }
         { plugin = nvim-base16; }
-        #{ plugin = nvim-lspconfig; }
-        #{ plugin = nvim-tree-lua; }
+        { plugin = nvim-lspconfig; }
+        { plugin = nvim-tree-lua; }
         { plugin = nvim-treesitter; }
-        #{ plugin = nvim-cmp; }
-        #{ plugin = cmp-nvim-lsp; }
+        { plugin = nvim-cmp; }
+        { plugin = cmp-nvim-lsp; }
+        { plugin = cmp-nvim-lua; }
+        { plugin = cmp-cmdline; }
+        { plugin = cmp-buffer; }
+        { plugin = cmp-path; }
+        { plugin = cmp_luasnip; }
         { plugin = vim-nix; }
         #{ plugin = vim-pandoc-syntax; }
         #{ plugin = vim-pandoc; }
@@ -32,9 +37,9 @@ in
         { plugin = luasnip; }
         { plugin = telescope-nvim; }
         { plugin = plenary-nvim; }
-        { plugin = packer-nvim; }
+        #{ plugin = packer-nvim; }
       ];
-    }; # neovim 
+    }; # neovim
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
     xdg.configFile."nvim/after".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/after";
     #xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
