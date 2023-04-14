@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-local servers = { 'clangd', 'cmake', 'pyright', 'rust_analyzer' }
+local servers = { 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -157,9 +157,17 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- Py
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities
 }
+
+-- Go
+require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+}
+
+-- Rust
 require('lspconfig')['rust_analyzer'].setup {
     capabilities = capabilities,
     settings = {

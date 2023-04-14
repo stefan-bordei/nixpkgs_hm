@@ -34,6 +34,7 @@ in {
     nodejs
     nodePackages.npm
     rust-analyzer
+    gopls
 
     # telescope deps
     ripgrep
