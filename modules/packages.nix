@@ -1,5 +1,6 @@
 { config, pkgs, libs, ... }:
 let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   home.packages = with pkgs; [
     # utilities
@@ -62,9 +63,13 @@ in {
     # games
     piper
     wine
+    unstable.vcmi
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
+
+    # ebooks
+    calibre
 
     # fonts
     b612
