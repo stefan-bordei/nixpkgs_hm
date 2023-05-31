@@ -35,41 +35,46 @@ cursor:
   unfocused_hollow: true
   thickness:        0.15
 
-# Colors (Srcery)
+
+# Base16 Atelier Dune - alacritty color config
 colors:
   # Default colors
   primary:
-    background: '#1c1b19'
-    foreground: '#fce8c3'
+    background: '0x20201d'
+    foreground: '0xa6a28c'
 
-  # Cursor colors
+  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: CellBackground
-    cursor: '#fbb829'
+    text: '0x20201d'
+    cursor: '0xa6a28c'
 
   # Normal colors
   normal:
-    black:   '#1c1b19'
-    red:     '#ef2f27'
-    green:   '#519f50'
-    yellow:  '#fbb829'
-    blue:    '#2c78bf'
-    magenta: '#e02c6d'
-    cyan:    '#0aaeb3'
-    white:   '#baa67f'
+    black:   '0x20201d'
+    red:     '0xd73737'
+    green:   '0x60ac39'
+    yellow:  '0xae9513'
+    blue:    '0x6684e1'
+    magenta: '0xb854d4'
+    cyan:    '0x1fad83'
+    white:   '0xa6a28c'
 
   # Bright colors
   bright:
-    black:   '#918175'
-    red:     '#f75341'
-    green:   '#98bc37'
-    yellow:  '#fed06e'
-    blue:    '#68a8e4'
-    magenta: '#ff5c8f'
-    cyan:    '#2be4d0'
-    white:   '#fce8c3'
+    black:   '0x7d7a68'
+    red:     '0xb65611'
+    green:   '0x292824'
+    yellow:  '0x6e6b5e'
+    blue:    '0x999580'
+    magenta: '0xe8e4cf'
+    cyan:    '0xd43552'
+    white:   '0xfefbec'
 
   transparent_background_colors: true
+
+
+draw_bold_text_with_bright_colors: false
+
 
 key_bindings:
   - { key: V,        mods: Control|Shift,    action: Paste               }
