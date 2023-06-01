@@ -32,6 +32,7 @@
           ./modules/alacritty.nix
           #./modules/i3.nix
           ./modules/neovim.nix
+          ./modules/tmux.nix
           ./modules/packages.nix
           ./home.nix
         ];
