@@ -37,6 +37,7 @@ in
         { plugin = luasnip; }
         { plugin = telescope-nvim; }
         { plugin = plenary-nvim; }
+        { plugin = vim-tmux-navigator; }
         #{ plugin = packer-nvim; }
       ];
     }; # neovim
