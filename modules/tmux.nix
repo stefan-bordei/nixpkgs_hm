@@ -10,18 +10,6 @@ in
       plugins = with pkgs.tmuxPlugins; [
         { plugin = vim-tmux-navigator; }
         { plugin = sensible; }
-        { plugin = dracula; }
-        {
-			plugin = dracula;
-			extraConfig = ''
-				set -g @dracula-show-battery false
-				set -g @dracula-show-powerline false
-                set -g @dracula-refresh-rate 10
-                set -g @dracula-show-left-icon session
-                set -g @dracula-left-icon-padding 2
-                set -g @dracula-show-fahrenheit false
-			'';
-		}
       ];
 
       extraConfig = ''
