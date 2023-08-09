@@ -47,6 +47,9 @@ in {
     # multimedia
     youtube-dl
 
+    # nix-dev
+    nixpkgs-review
+
     # themes
     adwaita-qt
     numix-gtk-theme
@@ -62,7 +65,6 @@ in {
 
     # games
     piper
-    wine
     unstable.vcmi
 
     # messengers

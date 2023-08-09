@@ -61,7 +61,7 @@ font-4 = FontAwesome:style=Regular:pixelsize=11:antialias=false;2
 
 modules-left = i3
 #modules-right = eth filesystem memory cpu temperature weather date
-modules-right = eth filesystem memory cpu date
+modules-right = eth filesystem memory cpu date alsa
 modules-center =
 
 tray-position = right
