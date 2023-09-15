@@ -15,6 +15,26 @@
         "type": "github"
       }
     },
+    "foolnotion": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1694414936,
+        "narHash": "sha256-cj5I4KFZEnTuw+BlpwdWfLNaNDrmS7P4+meeqa2Yiww=",
+        "owner": "foolnotion",
+        "repo": "nur-pkg",
+        "rev": "441d6186a384116002742ec135071b64b715f5fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "foolnotion",
+        "repo": "nur-pkg",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -69,6 +89,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "foolnotion": "foolnotion",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nur": "nur"

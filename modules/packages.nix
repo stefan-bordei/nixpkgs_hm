@@ -30,10 +30,16 @@ in {
     rustc
     cargo
 
+    # testing
+    vagrant
+    virtualbox
+
     # lsp
     clang
+    clang-tools
     nodejs
     nodePackages.npm
+    nodePackages.pyright
     rust-analyzer
     gopls
 
@@ -46,6 +52,7 @@ in {
 
     # multimedia
     youtube-dl
+    google-chrome
 
     # nix-dev
     nixpkgs-review
@@ -66,9 +73,13 @@ in {
     # games
     piper
     unstable.vcmi
+    katago
+    gogui
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
+    #unstable.teams
+    zoom
 
     # ebooks
     calibre

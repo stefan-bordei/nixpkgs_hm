@@ -7,14 +7,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    foolnotion = {
+      url = "github:foolnotion/nur-pkg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils";
   };
   outputs =
-    { self, home-manager, nixpkgs, flake-utils, nur, ... }:
+    { self, home-manager, nixpkgs, foolnotion, flake-utils, nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
+        overlays = [ foolnotion.overlay ];
         config = {
           allowUnsupportedSystem = true;
           allowUnfree = true;
@@ -31,6 +36,7 @@
         modules = [
           ./modules/alacritty.nix
           #./modules/i3.nix
+          ./modules/polybar.nix
           ./modules/neovim.nix
           ./modules/tmux.nix
           ./modules/packages.nix

@@ -167,6 +167,11 @@ require('lspconfig')['gopls'].setup {
     capabilities = capabilities
 }
 
+-- C
+require('lspconfig')['clangd'].setup {
+    capabilities = capabilities
+}
+
 -- Rust
 require('lspconfig')['rust_analyzer'].setup {
     capabilities = capabilities,
