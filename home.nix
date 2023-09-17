@@ -54,6 +54,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TCLLIBPATH = "$HOME/.local/share/tk-themes";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   services = {

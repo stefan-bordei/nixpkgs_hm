@@ -63,6 +63,7 @@ in {
     numix-cursor-theme
     numix-icon-theme
     materia-theme
+    libsForQt5.qt5ct
     libsForQt5.breeze-qt5
     libsForQt5.breeze-gtk
     themechanger
@@ -74,7 +75,9 @@ in {
     piper
     unstable.vcmi
     katago
-    gogui
+    chessx
+    stockfish
+    q5go
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })

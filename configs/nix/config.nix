@@ -1,5 +1,5 @@
-{ 
-  allowUnsupportedSystem = true; 
+{
+  allowUnsupportedSystem = true;
   allowUnfree = true;
   allowBroken = true;
 
