@@ -23,7 +23,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ foolnotion.overlay ];
         config = {
           allowUnsupportedSystem = true;
           allowUnfree = true;
@@ -40,13 +39,11 @@
 
         modules = [
           ./modules/alacritty.nix
-          #./modules/i3.nix
-          ./modules/polybar.nix
           ./modules/neovim.nix
           ./modules/tmux.nix
-          ./modules/packages.nix
           ./modules/sway.nix
           ./modules/waybar.nix
+          ./modules/packages.nix
           ./home.nix
         ];
       };
