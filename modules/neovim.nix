@@ -1,6 +1,6 @@
 { config, pkgs, libs, ... }:
 let
-  nixConfigDir = "${config.home.homeDirectory}/.config/nixpkgs";
+  nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
 in
 {
     programs.neovim = {
@@ -43,6 +43,6 @@ in
     }; # neovim
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
     xdg.configFile."nvim/after".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/after";
-    #xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
-    programs.neovim.extraConfig = "lua require('stefan')";
+    xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
+    #programs.neovim.extraConfig = "lua require('stefan')";
 }

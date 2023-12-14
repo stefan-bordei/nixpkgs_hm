@@ -12,13 +12,15 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.05";
 
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
 
   programs = {
-    home-manager.enable = true;
+    home-manager = {
+	enable = true;
+    };
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
     powerline-go.enable = true;
@@ -27,6 +29,10 @@
       sessionVariables = {
         EDITOR = "nvim";
       };
+      initExtra = ''
+        . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+        [ "$(tty)" = "/dev/tty1" ] && exec sway
+      '';
     };
     git = {
       enable = true;
@@ -40,15 +46,23 @@
 
     #  other programs
     alacritty.enable = true;
-    bat.enable = true;
-    exa.enable = true;
+    #bat.enable = true;
+    #exa.enable = true;
     firefox.enable = true;
     fzf.enable = true;
     gh.enable = true;
-    gitui.enable = true;
+    #gitui.enable = true;
     lazygit.enable = true;
     neovim.enable = true;
     go.enable = true;
+    swaylock.settings = {
+      color = "000000";
+      font-size = 24;
+      indicator-idle-visible = false;
+      indicator-radius = 100;
+      line-color = "ffffff";
+      show-failed-attempts = true;
+    };
   };
 
   home.sessionVariables = {

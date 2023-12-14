@@ -1,6 +1,28 @@
 { config, pkgs, libs, ... }:
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  #unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  configure-gtk = pkgs.writeTextFile {
+    name = "export-xdg-data-dirs";
+    destination = "/bin/configure-gtk";
+    executable = true;
+    text = let
+      schema = pkgs.gsettings-desktop-schemas;
+      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+    in ''
+      typeset -gx XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+    '';
+  };
+  dbus-sway-environment = pkgs.writeTextFile {
+    name = "dbus-sway-environment";
+    destination = "/bin/dbus-sway-environment";
+    executable = true;
+
+    text = ''
+      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+      systemctl --user stop pipewire xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
 in {
   home.packages = with pkgs; [
     # utilities
@@ -9,7 +31,6 @@ in {
     htop
     glib # for gsettings
     git-lfs
-    gitter
     gnome.gnome-dictionary
     gsimplecal
     keyd
@@ -25,6 +46,33 @@ in {
     nitrogen
     qmk
     gnumake
+
+    # sway
+    dconf
+    bemenu
+    configure-gtk
+    dbus-sway-environment
+    gnome.adwaita-icon-theme
+    grim
+    pipectl
+    slurp
+    swaybg
+    swaynotificationcenter
+    swaysettings
+    swaylock
+    wl-clipboard
+    wl-color-picker
+    wl-mirror
+    blackbox-terminal
+    hyprpaper
+    hyprpicker
+    wttrbar
+    gtklock
+    nwg-look
+    nwg-panel
+    swww
+    networkmanagerapplet
+    lxqt.pavucontrol-qt
 
     # Rust
     rustc
@@ -54,6 +102,9 @@ in {
     youtube-dl
     google-chrome
 
+    # broweser
+    google-chrome
+
     # nix-dev
     nixpkgs-review
 
@@ -70,14 +121,15 @@ in {
 
     # graphics
     nomacs
+    krita
+    blender
+    xf86_input_wacom
 
     # games
     piper
-    unstable.vcmi
-    katago
-    chessx
-    stockfish
-    q5go
+    vcmi
+    protonup-qt
+    lutris
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
