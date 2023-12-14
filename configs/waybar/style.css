@@ -1,71 +1,74 @@
 * {
-    border:        none;
+    border: none;
     border-radius: 0;
-    font-family:   Sans;
-    font-size:     15px;
-    box-shadow:    none;
-    text-shadow:   none;
-    transition-duration: 0s;
+    font-family: Consolas;
+    font-size: 13px;
+    min-height: 0;
 }
 
-window {
-    color:      rgba(217, 216, 216, 1);
-    background: rgba(35, 31, 32, 0.00);
-}
+@import "gruvbox.css";
 
-window#waybar.solo {
-    color:      rgba(217, 216, 216, 1);
-    background: rgba(35, 31, 32, 0.85);
-}
-
-#workspaces {
-    margin: 0 5px;
+window#waybar {
+    background: transparent;
+    border-bottom: 3px solid rgba(69, 133, 136, 1);
+    color: @white_b;
 }
 
 #workspaces button {
-    padding:    0 5px;
-    color:      rgba(217, 216, 216, 0.4);
-}
-
-#workspaces button.visible {
-    color:      rgba(217, 216, 216, 1);
+    padding: 0 5px;
+    background: transparent;
+    color: @white_b;
+    border-bottom: 3px solid transparent;
 }
 
 #workspaces button.focused {
-    border-top: 3px solid rgba(217, 216, 216, 1);
-    border-bottom: 3px solid rgba(217, 216, 216, 0);
+    background: @blue;
+    border-bottom: 3px solid @blue;
 }
 
-#workspaces button.urgent {
-    color:      rgba(238, 46, 36, 1);
+#mode, #clock, #battery {
+    padding: 0 10px;
+    margin: 0 5px;
 }
 
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail {
-    margin:     0px 6px 0px 10px;
-    min-width:  25px;
+#mode {
+    background: @red;
+    border-bottom: 3px solid @white_b;
 }
 
 #clock {
-    margin:     0px 16px 0px 10px;
-    min-width:  140px;
+    background-color: @orange_b;
+    color: @white_b;
 }
 
-#battery.warning {
-   color:       rgba(255, 210, 4, 1);
-}
-
-#battery.critical {
-    color:      rgba(238, 46, 36, 1);
+#battery {
+    background-color: @white_b;
+    color: @background;
 }
 
 #battery.charging {
-    color:      rgba(217, 216, 216, 1);
+    color: @background;
+    background-color: @green;
 }
 
-#custom-storage.warning {
-    color:      rgba(255, 210, 4, 1);
+@keyframes blink {
+    to {
+        background-color: @white_b;
+        color: @background;
+    }
 }
 
-#custom-storage.critical {
-    color:      rgba(238, 46, 36, 1);
+#idle_inhibitor, #pulseaudio, #custom-openvpn, #network, #cpu, #memory, #temperature, #backlight, #battery, #clock, #tray {
+     padding: 0 6px;
+     margin: 0 3px;
+}
+
+#battery.warning:not(.charging) {
+    background: @red;
+    color: @white_b;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
