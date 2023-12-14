@@ -44,6 +44,7 @@
           ./modules/sway.nix
           ./modules/waybar.nix
           ./modules/packages.nix
+          ./modules/kanshi.nix
           ./home.nix
         ];
       };

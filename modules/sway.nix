@@ -109,13 +109,17 @@ in
       ];
 
       output = {
-        "*".bg = "/home/zygot/Pictures/wallpapers/zerg1.jpg fill";
+        "*".bg = "/home/zygot/.config/sway/walpapers/bg.png fill";
         "DP-1".adaptive_sync = "off";
       };
     };
 
     extraConfig = ''
       include theme/default
+
+      blur_xray enable
+      corner_radius 10
+      default_dim_inactive 0.5
 
       workspace 1 output DP-1
       workspace 2 output DP-1
@@ -193,4 +197,7 @@ in
     XKB_DEFAULT_OPTIONS = "compose:menu";
   };
   xdg.configFile."sway/theme/default".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/theme/default";
+  xdg.configFile."sway/walpapers/bg.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg.png";
+  xdg.configFile."sway/walpapers/bg_nix.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg_nix.png";
+  xdg.configFile."sway/walpapers/zerg1.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/zerg1.png";
 }
