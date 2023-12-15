@@ -117,7 +117,9 @@ in
     extraConfig = ''
       include theme/default
 
-      blur_xray enable
+      blur enable
+      blur_passes 1
+      blur_radius 2
       corner_radius 10
       default_dim_inactive 0.2
 
