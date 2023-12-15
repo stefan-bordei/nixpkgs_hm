@@ -119,7 +119,7 @@ in
 
       blur_xray enable
       corner_radius 10
-      default_dim_inactive 0.5
+      default_dim_inactive 0.2
 
       workspace 1 output DP-1
       workspace 2 output DP-1
