@@ -73,6 +73,7 @@ in {
     swww
     networkmanagerapplet
     lxqt.pavucontrol-qt
+    pcmanfm-qt
 
     # Rust
     rustc
