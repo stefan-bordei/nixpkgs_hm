@@ -40,12 +40,14 @@ in {
     nix-info
     nixfmt
     xarchiver
+    xchm
     xdg-utils
     zenmonitor
     obsidian
     nitrogen
     qmk
     gnumake
+    tinygo
 
     # sway
     dconf
@@ -74,6 +76,7 @@ in {
     networkmanagerapplet
     lxqt.pavucontrol-qt
     pcmanfm-qt
+    xdg-desktop-portal-gtk
 
     # Rust
     rustc
@@ -102,6 +105,7 @@ in {
     # multimedia
     youtube-dl
     google-chrome
+    strawberry
 
     # broweser
     google-chrome
@@ -130,7 +134,8 @@ in {
     piper
     vcmi
     protonup-qt
-    lutris
+    #lutris
+    heroic
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
