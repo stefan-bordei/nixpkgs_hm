@@ -48,6 +48,7 @@ in {
     qmk
     gnumake
     tinygo
+    unzip
 
     # sway
     dconf
@@ -59,7 +60,7 @@ in {
     pipectl
     slurp
     swaybg
-    swaynotificationcenter
+    #swaynotificationcenter
     swaysettings
     swaylock
     wl-clipboard

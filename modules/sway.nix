@@ -110,12 +110,14 @@ in
 
       output = {
         "*".bg = "/home/zygot/.config/sway/walpapers/ghibli-city.png fill";
-        "DP-1".adaptive_sync = "off";
+        #"DP-1".adaptive_sync = "off";
       };
     };
 
     extraConfig = ''
       include theme/default
+
+      input * { tap enabled }
 
       blur enable
       blur_passes 1
