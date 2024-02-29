@@ -47,7 +47,7 @@ in {
     nitrogen
     qmk
     gnumake
-    tinygo
+    #tinygo
     unzip
 
     # sway
