@@ -48,7 +48,10 @@
     alacritty.enable = true;
     #bat.enable = true;
     #exa.enable = true;
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      package = pkgs.firefox;
+    };
     fzf.enable = true;
     gh.enable = true;
     #gitui.enable = true;
@@ -69,6 +72,7 @@
     EDITOR = "nvim";
     TCLLIBPATH = "$HOME/.local/share/tk-themes";
     QT_QPA_PLATFORMTHEME = "qt5ct";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
   services = {

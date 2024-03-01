@@ -78,6 +78,9 @@ in {
     lxqt.pavucontrol-qt
     pcmanfm-qt
     xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    qgnomeplatform
+    qgnomeplatform-qt6
 
     # Rust
     rustc
@@ -105,11 +108,11 @@ in {
 
     # multimedia
     youtube-dl
-    google-chrome
-    strawberry
+    (strawberry.override { withVlc = false; withGstreamer = true; })
 
     # broweser
-    google-chrome
+    #google-chrome
+    brave
 
     # nix-dev
     nixpkgs-review
@@ -127,21 +130,21 @@ in {
 
     # graphics
     nomacs
-    krita
-    blender
-    xf86_input_wacom
+    #krita
+    #blender
+    #xf86_input_wacom
 
     # games
     piper
     vcmi
-    protonup-qt
+    #protonup-qt
     #lutris
     heroic
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
     #unstable.teams
-    zoom
+    #zoom
 
     # ebooks
     calibre
