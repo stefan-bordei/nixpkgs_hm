@@ -17,7 +17,6 @@ in
         { plugin = fzf-vim; }
         { plugin = lazygit-nvim; }
         { plugin = lualine-nvim; }
-        #{ plugin = nerdtree; }
         { plugin = base16-nvim; }
         { plugin = nvim-lspconfig; }
         { plugin = nvim-tree-lua; }
@@ -30,16 +29,16 @@ in
         { plugin = cmp-path; }
         { plugin = cmp_luasnip; }
         { plugin = vim-nix; }
-        #{ plugin = vim-pandoc-syntax; }
-        #{ plugin = vim-pandoc; }
-        #{ plugin = vimtex; }
+        {
+        plugin = (nvim-treesitter.withPlugins
+          (ps: with ps; [ c lua python rust go ]));
+        }
         { plugin = rust-tools-nvim; }
         { plugin = luasnip; }
         { plugin = telescope-nvim; }
         { plugin = plenary-nvim; }
         { plugin = vim-tmux-navigator; }
         { plugin = null-ls-nvim; }
-        #{ plugin = packer-nvim; }
       ];
     }; # neovim
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
