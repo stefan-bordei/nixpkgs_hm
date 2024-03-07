@@ -77,8 +77,6 @@ in {
     networkmanagerapplet
     lxqt.pavucontrol-qt
     pcmanfm-qt
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
     qgnomeplatform
     qgnomeplatform-qt6
 
