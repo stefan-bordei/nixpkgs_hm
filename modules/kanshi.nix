@@ -19,7 +19,7 @@
             position = "1920,0";
           }
           {
-            criteria = "DP-9";
+            criteria = "DP-10";
             status = "enable";
             position = "0,0";
           }
