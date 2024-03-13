@@ -23,7 +23,14 @@
     };
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
-    powerline-go.enable = true;
+    powerline-go = {
+      enable = true;
+      extraUpdatePS1 = ''
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+          export PS1="$PS1(nix-shell): "
+        fi
+      '';
+    };
     bash = {
       enable = true;
       sessionVariables = {
