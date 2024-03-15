@@ -31,7 +31,7 @@ in
         set-environment -g COLORTERM "truecolor"
 
         # Mouse works as expected
-        set-option -g mouse on
+        set -g mouse on
         set -g base-index 1
         set -g pane-base-index 1
       '';
