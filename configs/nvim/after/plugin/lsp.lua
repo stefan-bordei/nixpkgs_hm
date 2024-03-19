@@ -77,11 +77,20 @@ cmp.setup({
        documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      --['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      --['<C-f>'] = cmp.mapping.scroll_docs(4),
+      --['<C-Space>'] = cmp.mapping.complete(),
+      --['<C-e>'] = cmp.mapping.abort(),
+      --['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Tab>'] = nil,
+        ['<S-Tab>'] = nil,
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -198,6 +207,13 @@ require('lspconfig')['rust_analyzer'].setup {
         }
     }
 }
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
