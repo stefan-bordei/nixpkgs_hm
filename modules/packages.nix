@@ -135,7 +135,7 @@ in {
     # games
     piper
     vcmi
-    #protonup-qt
+    protonup-qt
     #lutris
     heroic
 
