@@ -10,6 +10,9 @@ let
       datadir = "${schema}/share/gsettings-schemas/${schema.name}";
     in ''
       typeset -gx XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+      gnome_schema=org.gnome.desktop.interface
+      gsettings set $gnome_schema gtk-theme 'Adwaita'
+      gsettings set $gnome_schema color-scheme prefer-dark
     '';
   };
   dbus-sway-environment = pkgs.writeTextFile {
@@ -136,7 +139,7 @@ in {
     piper
     vcmi
     protonup-qt
-    #lutris
+    lutris
     heroic
 
     # messengers
