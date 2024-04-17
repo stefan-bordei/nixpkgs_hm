@@ -39,7 +39,6 @@ in
         { plugin = plenary-nvim; }
         { plugin = vim-tmux-navigator; }
         { plugin = null-ls-nvim; }
-        { plugin = copilot-vim; }
       ];
     }; # neovim
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";

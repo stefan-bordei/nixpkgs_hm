@@ -139,7 +139,7 @@ in {
     piper
     vcmi
     protonup-qt
-    lutris
+    #lutris
     heroic
 
     # messengers
