@@ -19,7 +19,6 @@ in
         { plugin = lualine-nvim; }
         { plugin = base16-nvim; }
         { plugin = nvim-lspconfig; }
-        { plugin = nvim-tree-lua; }
         { plugin = nvim-treesitter; }
         { plugin = nvim-cmp; }
         { plugin = cmp-nvim-lsp; }
@@ -39,6 +38,7 @@ in
         { plugin = plenary-nvim; }
         { plugin = vim-tmux-navigator; }
         { plugin = null-ls-nvim; }
+        { plugin = harpoon; }
       ];
     }; # neovim
     xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
