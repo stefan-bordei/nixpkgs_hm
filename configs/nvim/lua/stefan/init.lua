@@ -1,6 +1,5 @@
 require("stefan.set")
 require("stefan.remap")
---require("stefan.packer")
 
 
 local augroup = vim.api.nvim_create_augroup
