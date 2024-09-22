@@ -18,11 +18,12 @@
     };
   };
   outputs =
-    { self, home-manager, nixpkgs, flake-utils, hyprland, ... }:
+    { self, home-manager, nixpkgs, flake-utils, hyprland, foolnotion, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
+        overlay = [ foolnotion.overlay ];
         config = {
           allowUnsupportedSystem = true;
           allowUnfree = true;

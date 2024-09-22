@@ -3,7 +3,7 @@
 local nvim_lsp = require('lspconfig')
 
 
-local servers = { 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls' }
+local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -122,6 +122,15 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- lua
+require('lspconfig')['lua_ls'].setup {
+    capabilities = capabilities,
+    settings = {
+        diagnostics = {
+            globals = { 'vim' },
+          },
+    },
+}
 -- Py
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities

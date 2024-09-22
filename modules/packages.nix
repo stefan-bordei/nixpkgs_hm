@@ -99,6 +99,7 @@ in {
     nodePackages.pyright
     rust-analyzer
     gopls
+    lua-language-server
 
     # telescope deps
     ripgrep
@@ -139,8 +140,9 @@ in {
     piper
     vcmi
     protonup-qt
-    #lutris
     heroic
+    katago
+    #q5go
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
