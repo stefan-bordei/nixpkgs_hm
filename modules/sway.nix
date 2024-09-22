@@ -3,12 +3,27 @@ let
   nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
 in
 {
+  xdg.enable = true;
+  xdg.portal = {
+    enable = true;
+    config = {
+      sway = {
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        default = [ "wlr" "gtk" ];
+      };
+      common = { default = [ "gtk" ]; };
+    };
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     swaynag.enable = true;
+    checkConfig = false;
 
-    package = pkgs.swayfx;
+    package = pkgs.sway;
 
     config = {
       bars = [{ "command" = "waybar"; }];
@@ -154,10 +169,10 @@ in
       size = 10;
     };
 
-    gtk2.extraConfig = ''
-      gtk-cursor-theme-name = "Vanilla-DMZ"
-      gtk-cursor-theme-size = 0
-    '';
+    #gtk2.extraConfig = ''
+    #  gtk-cursor-theme-name = "Vanilla-DMZ"
+    #  gtk-cursor-theme-size = 0
+    #'';
 
     iconTheme = {
       package = pkgs.gnome.adwaita-icon-theme;
@@ -181,7 +196,7 @@ in
 
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme.name = "qtct";
   };
 
   home.sessionVariables = {
@@ -192,9 +207,7 @@ in
     NIXOS_OZONE_WL = 1;
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_QPA_PLATFORM = "wayland;xcb";
-    #QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-    #SDL_VIDEODRIVER = "x11"; # better than wayland for steam
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";

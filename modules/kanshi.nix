@@ -10,9 +10,9 @@
   services.kanshi = {
     enable = true;
 
-    profiles = {
-      lair = {
-        outputs = [
+    settings = [
+      {
+        profile.outputs = [
           {
             criteria = "eDP-1";
             status = "enable";
@@ -24,22 +24,38 @@
             position = "0,0";
           }
         ];
-      };
-      ziggurat = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            status = "enable";
-            position = "1920,0";
-          }
-          {
-            criteria = "HDMI-A-2";
-            status = "enable";
-            position = "0,0";
-          }
-        ];
-      };
-    };
+      }
+    ];
+    #profiles = {
+    #  lair = {
+    #    outputs = [
+    #      {
+    #        criteria = "eDP-1";
+    #        status = "enable";
+    #        position = "1920,0";
+    #      }
+    #      {
+    #        criteria = "DP-9";
+    #        status = "enable";
+    #        position = "0,0";
+    #      }
+    #    ];
+    #  };
+    #  ziggurat = {
+    #    outputs = [
+    #      {
+    #        criteria = "eDP-1";
+    #        status = "enable";
+    #        position = "1920,0";
+    #      }
+    #      {
+    #        criteria = "HDMI-A-2";
+    #        status = "enable";
+    #        position = "0,0";
+    #      }
+    #    ];
+    #  };
+    #};
   };
 
 }

@@ -34,7 +34,7 @@ in {
     htop
     glib # for gsettings
     git-lfs
-    gnome.gnome-dictionary
+    #gnome.gnome-dictionary
     gsimplecal
     keyd
     lazygit
@@ -58,7 +58,7 @@ in {
     bemenu
     configure-gtk
     dbus-sway-environment
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     grim
     pipectl
     slurp
@@ -96,7 +96,7 @@ in {
     clang-tools
     nodejs
     nodePackages.npm
-    nodePackages.pyright
+    pyright
     rust-analyzer
     gopls
     lua-language-server
@@ -109,7 +109,7 @@ in {
     lxqt.lxqt-policykit
 
     # multimedia
-    youtube-dl
+    yt-dlp
     (strawberry.override { withVlc = false; withGstreamer = true; })
 
     # broweser
