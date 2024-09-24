@@ -41,7 +41,7 @@ in {
     neovide
     neovim-qt
     nix-info
-    nixfmt
+    nixfmt-classic
     xarchiver
     xchm
     xdg-utils
@@ -119,6 +119,9 @@ in {
     # nix-dev
     nixpkgs-review
 
+    # keyboard
+    vial
+
     # themes
     adwaita-qt
     numix-gtk-theme
@@ -142,7 +145,7 @@ in {
     protonup-qt
     heroic
     katago
-    #q5go
+    q5go
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })

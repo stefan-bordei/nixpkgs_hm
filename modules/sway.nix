@@ -134,12 +134,6 @@ in
 
       input * { tap enabled }
 
-      blur enable
-      blur_passes 1
-      blur_radius 2
-      corner_radius 10
-      default_dim_inactive 0.2
-
       workspace 1 output DP-1
       workspace 2 output DP-1
       workspace 3 output DP-1
@@ -169,10 +163,10 @@ in
       size = 10;
     };
 
-    #gtk2.extraConfig = ''
-    #  gtk-cursor-theme-name = "Vanilla-DMZ"
-    #  gtk-cursor-theme-size = 0
-    #'';
+    gtk2.extraConfig = ''
+      gtk-cursor-theme-name = "Vanilla-DMZ"
+      gtk-cursor-theme-size = 0
+    '';
 
     iconTheme = {
       package = pkgs.gnome.adwaita-icon-theme;
