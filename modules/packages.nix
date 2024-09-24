@@ -120,7 +120,7 @@ in {
     nixpkgs-review
 
     # keyboard
-    vial
+    #vial
 
     # themes
     adwaita-qt
