@@ -48,7 +48,6 @@ in {
     zenmonitor
     obsidian
     nitrogen
-    qmk
     gnumake
     #tinygo
     unzip
@@ -120,7 +119,7 @@ in {
     nixpkgs-review
 
     # keyboard
-    #vial
+    qmk
 
     # themes
     adwaita-qt
