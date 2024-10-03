@@ -1,32 +1,5 @@
-{ config, pkgs, libs, ... }:
-let
-  #unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  configure-gtk = pkgs.writeTextFile {
-    name = "export-xdg-data-dirs";
-    destination = "/bin/configure-gtk";
-    executable = true;
-    text = let
-      schema = pkgs.gsettings-desktop-schemas;
-      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-    in ''
-      typeset -gx XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-      gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Adwaita'
-      gsettings set $gnome_schema color-scheme prefer-dark
-    '';
-  };
-  dbus-sway-environment = pkgs.writeTextFile {
-    name = "dbus-sway-environment";
-    destination = "/bin/dbus-sway-environment";
-    executable = true;
-
-    text = ''
-      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-      systemctl --user stop pipewire xdg-desktop-portal xdg-desktop-portal-wlr
-      systemctl --user start pipewire xdg-desktop-portal xdg-desktop-portal-wlr
-    '';
-  };
-in {
+{ config, pkgs, ... }:
+{
   home.packages = with pkgs; [
     # utilities
     (python3.withPackages(p: with p; [ pip python-lsp-server requests numpy ]))
@@ -34,7 +7,6 @@ in {
     htop
     glib # for gsettings
     git-lfs
-    #gnome.gnome-dictionary
     gsimplecal
     keyd
     lazygit
@@ -49,38 +21,21 @@ in {
     obsidian
     nitrogen
     gnumake
-    #tinygo
     unzip
 
     # sway
-    dconf
     bemenu
-    configure-gtk
-    dbus-sway-environment
-    adwaita-icon-theme
     grim
     pipectl
     slurp
     swaybg
-    #swaynotificationcenter
-    swaysettings
     swaylock
     wl-clipboard
     wl-color-picker
     wl-mirror
     blackbox-terminal
-    hyprpaper
-    hyprpicker
     wttrbar
     gtklock
-    nwg-look
-    nwg-panel
-    swww
-    networkmanagerapplet
-    lxqt.pavucontrol-qt
-    pcmanfm-qt
-    qgnomeplatform
-    qgnomeplatform-qt6
 
     # Rust
     rustc
@@ -122,15 +77,11 @@ in {
     qmk
 
     # themes
-    adwaita-qt
-    numix-gtk-theme
-    numix-cursor-theme
-    numix-icon-theme
-    materia-theme
     libsForQt5.qt5ct
-    libsForQt5.breeze-qt5
-    libsForQt5.breeze-gtk
-    themechanger
+    kdePackages.qt6ct
+    adwaita-qt
+    adwaita-qt6
+    yaru-theme
 
     # graphics
     nomacs
@@ -155,42 +106,56 @@ in {
     calibre
 
     # fonts
+    _0xproto
+    apl386
     b612
+    borg-sans-mono
     camingo-code
     cascadia-code
+    charis-sil
+    commit-mono
     corefonts
     d2coding
+    dejavu_fonts
     fira-code
     font-awesome_4
+    font-awesome
     go-font
     hack-font
     hermit
+    hasklig
+    hubot-sans
     ibm-plex
+    intel-one-mono
+    inter
     jetbrains-mono
     julia-mono
     liberation_ttf
     libertine
+    line-awesome
     lmodern
-    meslo-lg
-    #noto-fonts-emoji
-    fira-code-symbols
+    maple-mono
+    meslo-lgs-nf
+    monaspace
+    mona-sans
+    monocraft
+    nerdfonts
+    noto-fonts
+    noto-fonts-emoji
     overpass
+    public-sans
     recursive
     redhat-official-fonts
     rictydiminished-with-firacode
+    roboto-mono
     siji
-    source-code-pro
     source-sans
+    source-serif
+    source-code-pro
+    sudo-font
+    terminus_font
+    terminus_font_ttf
+    victor-mono
     vistafonts
-    line-awesome
-    inconsolata-nerdfont
-
-    # latex
-    texlive.combined.scheme-full
-    poppler_utils
-    jabref
-    kbibtex
-    pandoc
-    #jetbrains-mono
   ];
 }

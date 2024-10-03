@@ -1,38 +1,29 @@
 { config, pkgs, ... }:
-let
-  nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
-in
-{
-  xdg.enable = true;
-  xdg.portal = {
-    enable = true;
-    config = {
-      sway = {
-        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-        default = [ "wlr" "gtk" ];
-      };
-      common = { default = [ "gtk" ]; };
-    };
-    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-    xdgOpenUsePortal = true;
-  };
-
+let nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
+in {
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     swaynag.enable = true;
     checkConfig = false;
 
-    package = pkgs.sway;
+    systemd.enable = true;
+    systemd.extraCommands = [
+      "systemctl --user start sway-session.target"
+      "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$compositor_name"
+    ];
+
+    package = pkgs.swayfx;
 
     config = {
-      bars = [{ "command" = "waybar"; }];
+      bars = [];
       modifier = "Mod4";
       floating.modifier = "Mod4";
       terminal = "alacritty";
-      menu = "bemenu-run";
+      menu = "fuzzel";
       fonts = {
-        names = [ "Consolas" ];
+        names = [ "Source Cide Pro" ];
         size = 11.0;
       };
 
@@ -117,11 +108,11 @@ in
           "${mod}+r" = "mode resize";
         };
 
-      startup = [
-        #  { command = "export-xdg-data-dirs"; }
-        { command = "dbus-sway-environment"; }
-        { command = "configure-gtk"; }
-      ];
+      #startup = [
+      #  #  { command = "export-xdg-data-dirs"; }
+      #  { command = "dbus-sway-environment"; }
+      #  { command = "configure-gtk"; }
+      #];
 
       output = {
         "*".bg = "/home/zygot/.config/sway/walpapers/ghibli-city.png fill";
@@ -149,64 +140,12 @@ in
     '';
   };
 
-  programs.waybar.enable = true;
-
   #services.swayidle.enable = true;
 
-  #Gtk
-  gtk = {
-    enable = true;
-
-    font = {
-      package = pkgs.noto-fonts;
-      name = "Noto Sans";
-      size = 10;
-    };
-
-    gtk2.extraConfig = ''
-      gtk-cursor-theme-name = "Vanilla-DMZ"
-      gtk-cursor-theme-size = 0
-    '';
-
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "adwaita-dark";
-    };
-
-    theme = {
-      name = "Adwaita";
-    };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-      gtk-cursor-theme-name = "Vanilla-DMZ";
-      gtk-cursor-theme-size = 0;
-    };
-
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-  };
-
   home.sessionVariables = {
-    CLUTTER_BACKEND = "wayland";
-    GDK_BACKEND = "wayland,x11";
-    GTK_USE_PORTAL = 1;
-    MOZ_ENABLE_WAYLAND = 1;
-    NIXOS_OZONE_WL = 1;
-    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
-    XDG_CURRENT_DESKTOP = "sway";
-    XDG_SESSION_DESKTOP = "sway";
-    XDG_SESSION_TYPE = "wayland";
     XKB_DEFAULT_OPTIONS = "compose:menu";
   };
+
   xdg.configFile."sway/theme/default".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/theme/default";
   xdg.configFile."sway/walpapers/bg.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg.png";
   xdg.configFile."sway/walpapers/bg_nix.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg_nix.png";

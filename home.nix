@@ -1,4 +1,6 @@
-{ config, pkgs, nur, ... }: {
+{ config, lib, pkgs, nur, ... }:
+let nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "zygot";
@@ -17,12 +19,73 @@
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
 
-  programs = {
-    home-manager = {
-	enable = true;
+  # XDG
+  xdg.enable = true;
+  xdg.portal = {
+    enable = true;
+    config = {
+      common.default = "*";
+      sway = {
+        default = [ "wlr" "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+        "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+      };
     };
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
+    xdgOpenUsePortal = true;
+  };
+
+  services = {
+    gnome-keyring = {
+      enable = true;
+      components = [ "pkcs11" "secrets" "ssh" ];
+    };
+
+    network-manager-applet.enable = true;
+
+    # WM notifications
+    fnott = {
+      enable = true;
+      settings = {
+        low = {
+          title-font = "Source Sans Pro:weight=normal:size=14";
+          title-color = "ffffffff";
+        };
+
+        normal = {
+          title-font = "Source Sans Pro:weight=normal:size=14";
+          title-color = "ffffffff";
+        };
+
+        critical = {
+          title-font = "Source Sans Pro:weight=normal:size=14";
+          title-color = "ffffffff";
+        };
+      };
+    };
+  };
+
+  programs = {
+    home-manager.enable = true;
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
+
+    # WM-related stuff
+    fuzzel = {
+      enable = true;
+      settings.main.terminal = "foot";
+    };
+
+    waybar = {
+      enable = true;
+      package = pkgs.waybar.override{ hyprlandSupport = false; };
+      systemd = {
+        enable = true;
+      # target = "graphical-session.target";
+      };
+    };
+
     powerline-go = {
       enable = true;
       extraUpdatePS1 = ''
@@ -31,6 +94,7 @@
         fi
       '';
     };
+
     bash = {
       enable = true;
       sessionVariables = {
@@ -41,6 +105,7 @@
         [ "$(tty)" = "/dev/tty1" ] && exec sway
       '';
     };
+
     git = {
       enable = true;
       package = pkgs.gitFull;
@@ -78,13 +143,5 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TCLLIBPATH = "$HOME/.local/share/tk-themes";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
-
-  services = {
-    gnome-keyring.enable = true;
-    #picom.enable= true;
-  };
-
-  xdg.enable = true;
 }

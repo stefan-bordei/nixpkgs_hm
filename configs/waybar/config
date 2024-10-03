@@ -61,13 +61,11 @@
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
-            "portable": "",
-            "car": " ",
-            "default": ["", ""]
+            "default": ["", ""]
         },
         "on-click": "pavucontrol-qt"
     }

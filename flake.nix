@@ -16,9 +16,13 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
-    { self, home-manager, nixpkgs, flake-utils, hyprland, foolnotion, ... }:
+    { self, home-manager, nixpkgs, flake-utils, hyprland, foolnotion, stylix, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,10 +32,6 @@
           allowUnsupportedSystem = true;
           allowUnfree = true;
           allowBroken = true;
-          permittedInsecurePackages = [
-                "openjdk-18+36"
-		"electron-25.9.0"
-              ];
         };
       };
     in {
@@ -39,6 +39,7 @@
         inherit pkgs;
 
         modules = [
+          ./home.nix
           ./modules/alacritty.nix
           ./modules/neovim.nix
           ./modules/tmux.nix
@@ -46,7 +47,8 @@
           ./modules/waybar.nix
           ./modules/packages.nix
           ./modules/kanshi.nix
-          ./home.nix
+          ./modules/theme.nix
+          stylix.homeManagerModules.stylix
         ];
       };
 
