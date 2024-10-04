@@ -26,11 +26,12 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = /home/zygot/walpapers/ghibli-city.png;
+    image = ./../configs/sway/walpapers/ghibli-city.png;
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
 
     targets.alacritty.enable = false;
+    targets.tmux.enable = false;
     targets.zathura.enable = false;
     targets.waybar.enable = false;
     targets.swaylock.enable = false;
