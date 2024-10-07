@@ -23,7 +23,7 @@ in {
       terminal = "alacritty";
       menu = "fuzzel";
       fonts = {
-        names = [ "Source Cide Pro" ];
+        names = [ "Source Code Pro" ];
         size = 11.0;
       };
 

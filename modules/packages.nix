@@ -157,5 +157,6 @@
     terminus_font_ttf
     victor-mono
     vistafonts
+    line-awesome
   ];
 }
