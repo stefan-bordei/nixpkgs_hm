@@ -40,20 +40,20 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 70,
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
         "format-ethernet": "{ifname} ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-disconnected": "Disconnected 󰤮⚠"
     },
     "pulseaudio": {
         "scroll-step": 1,
@@ -61,11 +61,10 @@
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "default": ["", ""]
+            "default": ["󰕿", "󰖀", "󰕾"],
+            "headphone": "󱡬",
+            "speaker": ["󰕿", "󰖀", "󰕾"],
+            "hdmi": "󰡁",
         },
         "on-click": "pavucontrol-qt"
     }
