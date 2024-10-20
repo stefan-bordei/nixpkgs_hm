@@ -36,13 +36,15 @@
     blackbox-terminal
     wttrbar
     gtklock
+    lxqt.pavucontrol-qt
+    pcmanfm-qt
 
     # Rust
     rustc
     cargo
 
     # testing
-    vagrant
+    #vagrant
     virtualbox
 
     # lsp
