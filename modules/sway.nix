@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
-let nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
-in {
+let
+  nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
+in
+{
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -17,7 +19,7 @@ in {
     package = pkgs.swayfx;
 
     config = {
-      bars = [];
+      bars = [ ];
       modifier = "Mod4";
       floating.modifier = "Mod4";
       terminal = "alacritty";
@@ -37,7 +39,13 @@ in {
         let
           mod = config.wayland.windowManager.sway.config.modifier;
           inherit (config.wayland.windowManager.sway.config)
-            left down up right menu terminal;
+            left
+            down
+            up
+            right
+            menu
+            terminal
+            ;
         in
         {
           "${mod}+Return" = "exec ${terminal}";

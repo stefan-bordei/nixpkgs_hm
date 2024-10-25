@@ -3,7 +3,7 @@
 local nvim_lsp = require('lspconfig')
 
 
-local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls' }
+local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls', 'nixd'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -154,11 +154,12 @@ require('lspconfig')['gopls'].setup {
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl", "nix" },
     root_dir = require('lspconfig/util').root_pattern("go.work", "go.mod", ".git"),
     sources = {
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.goimports,
+        null_ls.builtins.formatting.nixfmt,
     },
     -- you can reuse a shared lspconfig on_attach callback here
     on_attach = function(client, bufnr)
@@ -180,6 +181,19 @@ null_ls.setup({
 -- C
 require('lspconfig')['clangd'].setup {
     capabilities = capabilities
+}
+
+-- Nix
+require('lspconfig')['nixd'].setup {
+    capabilities = capabilities,
+    settings = {
+        nixpkgs = {
+            expr = "import <nixpkgs> {}";
+        },
+        formatting = {
+            command = { "nixfmt" },
+        },
+    },
 }
 
 -- Rust

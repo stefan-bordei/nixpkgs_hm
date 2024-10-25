@@ -1,6 +1,14 @@
-{ config, lib, pkgs, nur, ... }:
-let nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
-in {
+{
+  config,
+  lib,
+  pkgs,
+  nur,
+  ...
+}:
+let
+  nixConfigDir = "${config.home.homeDirectory}/.config/home-manager";
+in
+{
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "zygot";
@@ -26,20 +34,30 @@ in {
     config = {
       common.default = "*";
       sway = {
-        default = [ "wlr" "gtk" ];
+        default = [
+          "wlr"
+          "gtk"
+        ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
         "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
       };
     };
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
     xdgOpenUsePortal = true;
   };
 
   services = {
     gnome-keyring = {
       enable = true;
-      components = [ "pkcs11" "secrets" "ssh" ];
+      components = [
+        "pkcs11"
+        "secrets"
+        "ssh"
+      ];
     };
 
     network-manager-applet.enable = true;
@@ -79,10 +97,10 @@ in {
 
     waybar = {
       enable = true;
-      package = pkgs.waybar.override{ hyprlandSupport = false; };
+      package = pkgs.waybar.override { hyprlandSupport = false; };
       systemd = {
         enable = true;
-      # target = "graphical-session.target";
+        # target = "graphical-session.target";
       };
     };
 

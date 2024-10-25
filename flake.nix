@@ -22,7 +22,16 @@
     };
   };
   outputs =
-    { self, home-manager, nixpkgs, flake-utils, hyprland, foolnotion, stylix, ... }:
+    {
+      self,
+      home-manager,
+      nixpkgs,
+      flake-utils,
+      hyprland,
+      foolnotion,
+      stylix,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -34,7 +43,8 @@
           allowBroken = true;
         };
       };
-    in {
+    in
+    {
       homeConfigurations.zygot = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 

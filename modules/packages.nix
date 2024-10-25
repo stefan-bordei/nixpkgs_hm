@@ -2,7 +2,14 @@
 {
   home.packages = with pkgs; [
     # utilities
-    (python3.withPackages(p: with p; [ pip python-lsp-server requests numpy ]))
+    (python3.withPackages (
+      p: with p; [
+        pip
+        python-lsp-server
+        requests
+        numpy
+      ]
+    ))
     asciinema
     htop
     glib # for gsettings
@@ -13,7 +20,7 @@
     neovide
     neovim-qt
     nix-info
-    nixfmt-classic
+    nixfmt-rfc-style
     xarchiver
     xchm
     xdg-utils
@@ -43,10 +50,6 @@
     rustc
     cargo
 
-    # testing
-    #vagrant
-    virtualbox
-
     # lsp
     clang
     clang-tools
@@ -56,6 +59,7 @@
     rust-analyzer
     gopls
     lua-language-server
+    nixd
 
     # telescope deps
     ripgrep
@@ -65,11 +69,12 @@
     lxqt.lxqt-policykit
 
     # multimedia
-    yt-dlp
-    (strawberry.override { withVlc = false; withGstreamer = true; })
+    (strawberry.override {
+      withVlc = false;
+      withGstreamer = true;
+    })
 
     # broweser
-    #google-chrome
     brave
 
     # nix-dev
@@ -92,9 +97,7 @@
     #xf86_input_wacom
 
     # games
-    piper
     vcmi
-    protonup-qt
     heroic
     katago
     q5go
