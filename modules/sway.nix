@@ -116,15 +116,8 @@ in
           "${mod}+r" = "mode resize";
         };
 
-      #startup = [
-      #  #  { command = "export-xdg-data-dirs"; }
-      #  { command = "dbus-sway-environment"; }
-      #  { command = "configure-gtk"; }
-      #];
-
       output = {
         "*".bg = "/home/zygot/.config/sway/walpapers/ghibli-city.png fill";
-        #"DP-1".adaptive_sync = "off";
       };
     };
 
@@ -133,16 +126,15 @@ in
 
       input * { tap enabled }
 
-      workspace 1 output DP-1
-      workspace 2 output DP-1
-      workspace 3 output DP-1
-      workspace 4 output DP-1
-      workspace 5 output DP-1
-      workspace 6 output DP-1
-      workspace 7 output DP-1
-      workspace 8 output DP-1
-      workspace 9 output DP-1
-      workspace 10 output HDMI-A-1
+      workspace 1 output DP-9
+      workspace 2 output DP-9
+      workspace 3 output DP-9
+      workspace 4 output DP-9
+      workspace 5 output DP-9
+      workspace 6 output eDP-1
+      workspace 7 output eDP-1
+      workspace 8 output eDP-1
+      workspace 9 output eDP-1
 
       exec nm-applet --indicator
     '';
