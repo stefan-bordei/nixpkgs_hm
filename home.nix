@@ -131,6 +131,11 @@ in
       userName = "stefan-bordei";
       extraConfig = {
         core.editor = "vim";
+        url = {
+          "ssh://git@github.com" = {
+            insteadOf = "https://github.com";
+          };
+        };
       };
     };
 
