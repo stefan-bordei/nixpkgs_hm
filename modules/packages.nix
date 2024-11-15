@@ -58,7 +58,7 @@
     pyright
     rust-analyzer
     gopls
-    lua-language-server
+    #lua-language-server
     nixd
 
     # telescope deps
