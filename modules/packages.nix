@@ -45,6 +45,7 @@
     gtklock
     lxqt.pavucontrol-qt
     pcmanfm-qt
+    brightnessctl
 
     # Rust
     rustc
@@ -73,6 +74,13 @@
       withVlc = false;
       withGstreamer = true;
     })
+
+    # music
+    reaper
+    guitarix
+    drumgizmo
+    gxplugins-lv2
+    neural-amp-modeler-lv2
 
     # broweser
     brave
