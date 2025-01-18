@@ -147,6 +147,12 @@ in
       enable = true;
       package = pkgs.firefox-bin;
     };
+    sioyek = {
+      enable = true;
+      package = pkgs.sioyek.overrideAttrs (old: {
+        buildInputs = old.buildInputs ++ [ pkgs.kdePackages.qtwayland ];
+      });
+    };
     fzf.enable = true;
     gh.enable = true;
     #gitui.enable = true;
