@@ -71,8 +71,8 @@
 
     # multimedia
     (strawberry.override {
-      withVlc = false;
-      withGstreamer = true;
+      #withVlc = false;
+      #withGstreamer = true;
     })
 
     # music
@@ -152,7 +152,6 @@
     monaspace
     mona-sans
     monocraft
-    nerdfonts
     noto-fonts
     noto-fonts-emoji
     overpass
