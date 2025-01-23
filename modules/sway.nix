@@ -129,15 +129,15 @@ in
 
       input * { tap enabled }
 
-      workspace 1 output DP-9
-      workspace 2 output DP-9
-      workspace 3 output DP-9
-      workspace 4 output DP-9
+      workspace 1 output eDP-1
+      workspace 2 output eDP-1
+      workspace 3 output eDP-1
+      workspace 4 output eDP-1
       workspace 5 output DP-9
-      workspace 6 output eDP-1
-      workspace 7 output eDP-1
-      workspace 8 output eDP-1
-      workspace 9 output eDP-1
+      workspace 6 output DP-9
+      workspace 7 output DP-9
+      workspace 8 output DP-9
+      workspace 9 output DP-9
 
       exec nm-applet --indicator
     '';
@@ -149,10 +149,16 @@ in
     XKB_DEFAULT_OPTIONS = "compose:menu";
   };
 
-  xdg.configFile."sway/theme/default".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/theme/default";
-  xdg.configFile."sway/walpapers/bg.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg.png";
-  xdg.configFile."sway/walpapers/bg_nix.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg_nix.png";
-  xdg.configFile."sway/walpapers/zerg1.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/zerg1.png";
-  xdg.configFile."sway/walpapers/ghibli-garden.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/ghibli-garden.png";
-  xdg.configFile."sway/walpapers/ghibli-city.png".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/ghibli-city.png";
+  xdg.configFile."sway/theme/default".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/theme/default";
+  xdg.configFile."sway/walpapers/bg.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg.png";
+  xdg.configFile."sway/walpapers/bg_nix.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/bg_nix.png";
+  xdg.configFile."sway/walpapers/zerg1.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/zerg1.png";
+  xdg.configFile."sway/walpapers/ghibli-garden.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/ghibli-garden.png";
+  xdg.configFile."sway/walpapers/ghibli-city.png".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/sway/walpapers/ghibli-city.png";
 }
