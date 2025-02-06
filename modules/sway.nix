@@ -133,7 +133,7 @@ in
       workspace 2 output eDP-1
       workspace 3 output eDP-1
       workspace 4 output eDP-1
-      workspace 5 output DP-9
+      workspace 5 output eDP-1
       workspace 6 output DP-9
       workspace 7 output DP-9
       workspace 8 output DP-9

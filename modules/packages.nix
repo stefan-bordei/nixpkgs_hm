@@ -47,6 +47,9 @@
     pcmanfm-qt
     brightnessctl
 
+    # k8s
+    k3d
+
     # Rust
     rustc
     cargo
@@ -117,6 +120,7 @@
 
     # ebooks
     calibre
+    pdftk
 
     # fonts
     _0xproto
