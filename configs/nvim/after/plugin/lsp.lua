@@ -3,7 +3,7 @@
 local nvim_lsp = require('lspconfig')
 
 
-local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls', 'nixd'}
+local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls', 'nixd', 'kotlin_language_server' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -131,6 +131,12 @@ require('lspconfig')['lua_ls'].setup {
           },
     },
 }
+
+-- Koklion
+require('lspconfig')['kotlin_language_server'].setup {
+    capabilities = capabilities
+}
+
 -- Py
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities
@@ -151,6 +157,22 @@ require('lspconfig')['gopls'].setup {
 }
 
 -- formatting
+-- Only Koklin stuff that does not work like any other language...
+require("conform").setup({
+  formatters_by_ft = {
+    kotlin = { "ktlint" },
+  },
+})
+
+vim.keymap.set({ "n", "v" }, "<leader>l", function()
+    require("conform").format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+    })
+end, { desc = "Format file or range (in visual mode)" })
+
+--null-ls
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({

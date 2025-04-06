@@ -62,8 +62,10 @@
     pyright
     rust-analyzer
     gopls
-    #lua-language-server
+    lua-language-server
     nixd
+    kotlin-language-server
+    ktlint
 
     # telescope deps
     ripgrep
@@ -87,6 +89,7 @@
 
     # broweser
     brave
+    google-chrome
 
     # nix-dev
     nixpkgs-review

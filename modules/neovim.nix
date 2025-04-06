@@ -42,6 +42,7 @@ in
               python
               rust
               go
+              kotlin
             ]
           )
         );
@@ -52,11 +53,15 @@ in
       { plugin = plenary-nvim; }
       { plugin = vim-tmux-navigator; }
       { plugin = null-ls-nvim; }
+      { plugin = conform-nvim; }
       { plugin = harpoon; }
     ];
   }; # neovim
-  xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
-  xdg.configFile."nvim/after".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/after";
-  xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
+  xdg.configFile."nvim/lua".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/lua";
+  xdg.configFile."nvim/after".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/after";
+  xdg.configFile."nvim/init.lua".source =
+    config.lib.file.mkOutOfStoreSymlink "${nixConfigDir}/configs/nvim/init.lua";
   #programs.neovim.extraConfig = "lua require('stefan')";
 }
