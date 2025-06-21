@@ -3,7 +3,7 @@
 local nvim_lsp = require('lspconfig')
 
 
-local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls', 'nixd', 'kotlin_language_server' }
+local servers = { 'lua_ls', 'clangd', 'cmake', 'pyright', 'rust_analyzer', 'gopls', 'nixd' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -132,11 +132,6 @@ require('lspconfig')['lua_ls'].setup {
     },
 }
 
--- Koklion
-require('lspconfig')['kotlin_language_server'].setup {
-    capabilities = capabilities
-}
-
 -- Py
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities
@@ -173,32 +168,32 @@ vim.keymap.set({ "n", "v" }, "<leader>l", function()
 end, { desc = "Format file or range (in visual mode)" })
 
 --null-ls
-local null_ls = require("null-ls")
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-null_ls.setup({
-    filetypes = { "go", "gomod", "gowork", "gotmpl", "nix" },
-    root_dir = require('lspconfig/util').root_pattern("go.work", "go.mod", ".git"),
-    sources = {
-        null_ls.builtins.formatting.gofmt,
-        null_ls.builtins.formatting.goimports,
-        null_ls.builtins.formatting.nixfmt,
-    },
-    -- you can reuse a shared lspconfig on_attach callback here
-    on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                    -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
-        end
-    end,
-})
+--local null_ls = require("null-ls")
+--local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+--null_ls.setup({
+--    filetypes = { "go", "gomod", "gowork", "gotmpl", "nix" },
+--    root_dir = require('lspconfig/util').root_pattern("go.work", "go.mod", ".git"),
+--    sources = {
+--        null_ls.builtins.formatting.gofmt,
+--        null_ls.builtins.formatting.goimports,
+--        null_ls.builtins.formatting.nixfmt,
+--    },
+--    -- you can reuse a shared lspconfig on_attach callback here
+--    on_attach = function(client, bufnr)
+--        if client.supports_method("textDocument/formatting") then
+--            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+--            vim.api.nvim_create_autocmd("BufWritePre", {
+--                group = augroup,
+--                buffer = bufnr,
+--                callback = function()
+--                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+--                    -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+--                    vim.lsp.buf.format({ bufnr = bufnr })
+--                end,
+--            })
+--        end
+--    end,
+--})
 
 -- C
 require('lspconfig')['clangd'].setup {

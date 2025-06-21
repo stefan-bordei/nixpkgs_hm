@@ -97,7 +97,7 @@ in
 
     waybar = {
       enable = true;
-      package = pkgs.waybar.override { hyprlandSupport = false; };
+      package = pkgs.waybar; # pkgs.waybar.override { hyprlandSupport = false; };
       systemd = {
         enable = true;
         # target = "graphical-session.target";

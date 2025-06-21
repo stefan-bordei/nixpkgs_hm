@@ -154,7 +154,7 @@
     libertine
     line-awesome
     lmodern
-    maple-mono
+    #maple-mono
     meslo-lgs-nf
     monaspace
     mona-sans
