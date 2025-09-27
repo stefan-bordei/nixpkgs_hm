@@ -35,8 +35,8 @@ in
       common.default = "*";
       sway = {
         default = [
-          "wlr"
           "gtk"
+          "wlr"
         ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
@@ -143,10 +143,6 @@ in
     alacritty.enable = true;
     bat.enable = true;
     eza.enable = true;
-    firefox = {
-      enable = true;
-      package = pkgs.firefox-bin;
-    };
     sioyek = {
       enable = true;
       package = pkgs.sioyek.overrideAttrs (old: {
@@ -172,5 +168,6 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     TCLLIBPATH = "$HOME/.local/share/tk-themes";
+    XKB_DEFAULT_OPTIONS = "compose:menu";
   };
 }

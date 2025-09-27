@@ -46,6 +46,7 @@
     lxqt.pavucontrol-qt
     pcmanfm-qt
     brightnessctl
+    xwayland-satellite
 
     # k8s
     k3d
@@ -57,7 +58,7 @@
     # lsp
     clang
     clang-tools
-    nodejs
+    #nodejs
     nodePackages.npm
     pyright
     rust-analyzer
@@ -73,6 +74,20 @@
     # password management
     lxqt.lxqt-sudo
     lxqt.lxqt-policykit
+
+    # useful tools from lxqt
+    lxqt.lximage-qt
+    lxqt.lxqt-archiver
+    lxqt.lxqt-config
+    lxqt.lxqt-openssh-askpass
+    lxqt.lxqt-panel
+    lxqt.lxqt-qtplugin
+    lxqt.pavucontrol-qt
+    lxqt.pcmanfm-qt
+    lxqt.qterminal
+    lxappearance
+    qpwgraph
+    xwayland-satellite
 
     # multimedia
     (strawberry.override {
@@ -103,6 +118,8 @@
     adwaita-qt
     adwaita-qt6
     yaru-theme
+    libsForQt5.qt5.qtwayland
+    kdePackages.qtwayland
 
     # graphics
     nomacs
@@ -119,7 +136,7 @@
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
     #unstable.teams
-    #zoom
+    unstable.zoom-us
 
     # ebooks
     calibre

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +27,7 @@
       self,
       home-manager,
       nixpkgs,
+      nixpkgs-unstable,
       flake-utils,
       hyprland,
       foolnotion,
@@ -34,9 +36,20 @@
     }:
     let
       system = "x86_64-linux";
+      unstableOverlay = final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };
+      };
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ foolnotion.overlay ];
+        overlays = [
+          foolnotion.overlay
+          unstableOverlay
+        ];
         config = {
           allowUnsupportedSystem = true;
           allowUnfree = true;
@@ -58,7 +71,7 @@
           ./modules/packages.nix
           ./modules/kanshi.nix
           ./modules/theme.nix
-          stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
         ];
       };
 

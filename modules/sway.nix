@@ -9,14 +9,34 @@ in
     swaynag.enable = true;
     checkConfig = false;
 
-    systemd.enable = true;
-    systemd.extraCommands = [
-      "systemctl --user start sway-session.target"
-      "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$compositor_name"
-    ];
+    xwayland = true;
 
-    package = pkgs.swayfx;
+    systemd = {
+      enable = true;
+      variables = [
+        "DISPLAY"
+        "FREETYPE_PROPERTIES"
+        "NIXOS_OZONE_WL"
+        "PATH"
+        "SWAYSOCK"
+        "WAYLAND_DISPLAY"
+        "WLR_RENDERER"
+        "XCURSOR_SIZE"
+        "XCURSOR_THEME"
+        "XDG_CURRENT_DESKTOP"
+        "XDG_SESSION_TYPE"
+      ];
+    };
+
+    #systemd.enable = true;
+    #systemd.extraCommands = [
+    #  "systemctl --user start sway-session.target"
+    #  "systemctl --user import-environment DISPLAY PATH WLR_REMDERER WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
+    #  "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$compositor_name"
+    #];
+
+    #package = pkgs.swayfx;
+    package = pkgs.sway;
 
     config = {
       bars = [ ];
@@ -140,13 +160,95 @@ in
       workspace 9 output DP-9
 
       exec nm-applet --indicator
+
+      for_window [window_role = "pop-up"] floating enable
+      for_window [window_role = "bubble"] floating enable
+      for_window [window_role = "dialog"] floating enable
+      for_window [window_type = "dialog"] floating enable
+      for_window [window_role = "task_dialog"] floating enable
+      for_window [window_type = "menu"] floating enable
+      for_window [app_id = "floating"] floating enable
+      for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+      for_window [title = "Administrator privileges required"] floating enable
+
+      for_window [window_role = "About"] floating enable
+
+      for_window [class="^Steam$" title="^Friends$"] floating enable
+      for_window [class="^Steam$" title="Steam - News"] floating enable
+      for_window [class="^Steam$" title=".* - Chat"] floating enable
+      for_window [class="^Steam$" title="^Settings$"] floating enable
+      for_window [class="^Steam$" title=".* - event started"] floating enable
+      for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+      for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+      for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+      for_window [title="^Steam Keyboard$"] floating enable
+
+      for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
     '';
   };
 
   #services.swayidle.enable = true;
 
+  programs.swayr = {
+    enable = true;
+    systemd = {
+      enable = true;
+    };
+    settings = {
+      menu = {
+        executable = "fuzzel";
+        args = [
+          "--dmenu"
+          "--prompt={prompt}"
+        ];
+      };
+
+      format = {
+        output_format = "{indent}Output {name}    ({id})";
+        workspace_format = "{indent}Workspace {name} [{layout}] on output {output_name}    ({id})";
+        container_format = "{indent}Container [{layout}] {marks} on workspace {workspace_name}    ({id})";
+        window_format = "img:{app_icon}:text:{indent}{app_name} — {urgency_start}“{title}”{urgency_end} {marks} on workspace {workspace_name} / {output_name}    ({id})";
+        indent = "    ";
+        urgency_start = "";
+        urgency_end = "";
+        html_escape = true;
+      };
+
+      layout = {
+        auto_tile = false;
+        auto_tile_min_window_width_per_output_width = [
+          [ 800 400 ]
+          [ 1024 500 ]
+          [ 1280 600 ]
+          [ 1400 680 ]
+          [ 1440 700 ]
+          [ 1600 780 ]
+          [ 1680 780 ]
+          [ 1920 920 ]
+          [ 2048 980 ]
+          [ 2560 1000 ]
+          [ 3440 1200 ]
+          [ 3840 1280 ]
+          [ 4096 1400 ]
+          [ 4480 1600 ]
+          [ 7680 2400 ]
+        ];
+      };
+
+      focus = {
+        lockin_delay = 750;
+      };
+
+      misc =
+        {
+          seq_inhibit = false;
+        };
+    };
+  };
+
   home.sessionVariables = {
-    XKB_DEFAULT_OPTIONS = "compose:menu";
+    NIXOS_OZONE_WL = 1;
+    #DISPLAY = ":0";
   };
 
   xdg.configFile."sway/theme/default".source =
