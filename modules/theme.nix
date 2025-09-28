@@ -44,13 +44,13 @@
 
     fonts = {
       serif = {
-        package = pkgs.source-serif;
-        name = "Source Serif";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
       };
 
       sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
       };
 
       monospace = {
