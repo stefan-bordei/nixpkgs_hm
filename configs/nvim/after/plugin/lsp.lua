@@ -10,6 +10,7 @@ require("conform").setup({
 		-- You can customize some of the format options for the filetype (:help conform.format)
 		rust = { "rustfmt", lsp_format = "fallback" },
 		go = { "goimports", "gofmt" },
+		nix = { "nixfmt" },
 	},
 })
 

@@ -1,9 +1,10 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: Consolas;
-    font-size: 13px;
-    min-height: 0;
+    border-radius: 0px;
+    font-family: "Consolas";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0px;
 }
 
 @import "gruvbox.css";

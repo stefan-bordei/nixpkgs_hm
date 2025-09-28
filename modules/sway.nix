@@ -27,15 +27,6 @@ in
         "XDG_SESSION_TYPE"
       ];
     };
-
-    #systemd.enable = true;
-    #systemd.extraCommands = [
-    #  "systemctl --user start sway-session.target"
-    #  "systemctl --user import-environment DISPLAY PATH WLR_REMDERER WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
-    #  "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$compositor_name"
-    #];
-
-    #package = pkgs.swayfx;
     package = pkgs.sway;
 
     config = {
@@ -217,21 +208,66 @@ in
       layout = {
         auto_tile = false;
         auto_tile_min_window_width_per_output_width = [
-          [ 800 400 ]
-          [ 1024 500 ]
-          [ 1280 600 ]
-          [ 1400 680 ]
-          [ 1440 700 ]
-          [ 1600 780 ]
-          [ 1680 780 ]
-          [ 1920 920 ]
-          [ 2048 980 ]
-          [ 2560 1000 ]
-          [ 3440 1200 ]
-          [ 3840 1280 ]
-          [ 4096 1400 ]
-          [ 4480 1600 ]
-          [ 7680 2400 ]
+          [
+            800
+            400
+          ]
+          [
+            1024
+            500
+          ]
+          [
+            1280
+            600
+          ]
+          [
+            1400
+            680
+          ]
+          [
+            1440
+            700
+          ]
+          [
+            1600
+            780
+          ]
+          [
+            1680
+            780
+          ]
+          [
+            1920
+            920
+          ]
+          [
+            2048
+            980
+          ]
+          [
+            2560
+            1000
+          ]
+          [
+            3440
+            1200
+          ]
+          [
+            3840
+            1280
+          ]
+          [
+            4096
+            1400
+          ]
+          [
+            4480
+            1600
+          ]
+          [
+            7680
+            2400
+          ]
         ];
       };
 
@@ -239,10 +275,9 @@ in
         lockin_delay = 750;
       };
 
-      misc =
-        {
-          seq_inhibit = false;
-        };
+      misc = {
+        seq_inhibit = false;
+      };
     };
   };
 
