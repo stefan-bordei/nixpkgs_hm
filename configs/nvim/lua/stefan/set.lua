@@ -1,5 +1,7 @@
 vim.cmd("colorscheme base16-rose-pine")
 
+vim.opt.guicursor = ""
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 

@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pb", "<Esc>:Telescope buffers<CR>")
 
+vim.keymap.set("i", "jj", "<Esc>")
+
 -- Navigating
 require("harpoon").setup()
 vim.keymap.set("n", "<leader>a", '<Esc>:lua require("harpoon.mark").add_file()<CR>')

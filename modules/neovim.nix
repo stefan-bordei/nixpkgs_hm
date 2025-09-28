@@ -27,6 +27,8 @@ in
       { plugin = nvim-treesitter; }
       { plugin = nvim-cmp; }
       { plugin = cmp-nvim-lsp; }
+      { plugin = lsp-zero-nvim; }
+      { plugin = mason-lspconfig-nvim; }
       { plugin = cmp-nvim-lua; }
       { plugin = cmp-cmdline; }
       { plugin = cmp-buffer; }
@@ -42,7 +44,7 @@ in
               python
               rust
               go
-              kotlin
+              nix
             ]
           )
         );
@@ -52,7 +54,6 @@ in
       { plugin = telescope-nvim; }
       { plugin = plenary-nvim; }
       { plugin = vim-tmux-navigator; }
-      { plugin = null-ls-nvim; }
       { plugin = conform-nvim; }
       { plugin = harpoon; }
     ];

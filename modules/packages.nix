@@ -67,6 +67,7 @@
     nixd
     kotlin-language-server
     ktlint
+    stylua
 
     # telescope deps
     ripgrep
