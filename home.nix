@@ -61,6 +61,7 @@ in
     };
 
     network-manager-applet.enable = true;
+    xembedsniproxy.enable = true;
 
     # WM notifications
     fnott = {

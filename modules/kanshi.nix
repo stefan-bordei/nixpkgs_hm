@@ -14,15 +14,21 @@
     settings = [
       {
         profile.outputs = [
+          #{
+          #  criteria = "eDP-1";
+          #  status = "enable";
+          #  position = "1920,0";
+          #}
+          #{
+          #  criteria = "DP-9";
+          #  status = "enable";
+          #  position = "0,0";
+          #}
           {
-            criteria = "eDP-1";
-            status = "enable";
-            position = "1920,0";
-          }
-          {
-            criteria = "DP-9";
+            criteria = "DP-5";
             status = "enable";
             position = "0,0";
+            mode = "1920x1200";
           }
         ];
       }
