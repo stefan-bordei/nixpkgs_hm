@@ -61,7 +61,7 @@ in
     };
 
     network-manager-applet.enable = true;
-    xembedsniproxy.enable = true;
+    xembed-sni-proxy.enable = true;
 
     # WM notifications
     fnott = {
@@ -128,9 +128,9 @@ in
     git = {
       enable = true;
       package = pkgs.gitFull;
-      userEmail = "stefan.bordei13@gmail.com";
-      userName = "stefan-bordei";
-      extraConfig = {
+      settings = {
+        user.email = "stefan.bordei13@gmail.com";
+        user.name = "stefan-bordei";
         core.editor = "vim";
         url = {
           "ssh://git@github.com" = {

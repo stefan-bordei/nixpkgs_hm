@@ -49,7 +49,6 @@ in
           )
         );
       }
-      { plugin = rust-tools-nvim; }
       { plugin = luasnip; }
       { plugin = telescope-nvim; }
       { plugin = plenary-nvim; }

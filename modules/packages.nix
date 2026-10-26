@@ -29,6 +29,7 @@
     nitrogen
     gnumake
     unzip
+    zip
 
     # sway
     bemenu
@@ -59,7 +60,7 @@
     clang
     clang-tools
     #nodejs
-    nodePackages.npm
+    #npm
     pyright
     rust-analyzer
     gopls
@@ -124,20 +125,20 @@
 
     # graphics
     nomacs
-    #krita
+    krita
     #blender
     #xf86_input_wacom
 
     # games
-    vcmi
+    #vcmi
     heroic
-    katago
-    q5go
+    #katago
+    #q5go
 
     # messengers
     (discord.override { nss = pkgs.nss_latest; })
     #unstable.teams
-    unstable.zoom-us
+    #unstable.zoom-us
 
     # ebooks
     calibre
@@ -150,7 +151,7 @@
     borg-sans-mono
     camingo-code
     cascadia-code
-    charis-sil
+    charis
     commit-mono
     corefonts
     d2coding
@@ -178,7 +179,7 @@
     mona-sans
     monocraft
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     overpass
     public-sans
     recursive
@@ -193,7 +194,7 @@
     terminus_font
     terminus_font_ttf
     victor-mono
-    vistafonts
+    vista-fonts
     line-awesome
   ];
 }
