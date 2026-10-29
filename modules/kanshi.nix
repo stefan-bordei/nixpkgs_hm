@@ -25,7 +25,7 @@
           #  position = "0,0";
           #}
           {
-            criteria = "DP-5";
+            criteria = "DP-2";
             status = "enable";
             position = "0,0";
             mode = "1920x1200";

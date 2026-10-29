@@ -140,6 +140,18 @@ in
       };
     };
 
+    ssh = {
+      enable = true;
+      matchBlocks = {
+        rpi = {
+          hostname = "nix-pi.local";
+          user = "zgt";
+          identityFile = "~/.ssh/id_ed25519_pi";
+          identitiesOnly = true;
+        };
+      };
+    };
+
     #  other programs
     alacritty.enable = true;
     bat.enable = true;

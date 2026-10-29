@@ -26,10 +26,11 @@
     xdg-utils
     zenmonitor
     obsidian
-    nitrogen
+    #nitrogen
     gnumake
     unzip
     zip
+    rpi-imager
 
     # sway
     bemenu
@@ -120,7 +121,7 @@
     adwaita-qt
     adwaita-qt6
     yaru-theme
-    libsForQt5.qt5.qtwayland
+    qt5.qtwayland
     kdePackages.qtwayland
 
     # graphics
@@ -136,7 +137,8 @@
     #q5go
 
     # messengers
-    (discord.override { nss = pkgs.nss_latest; })
+    #(discord.override { nss = pkgs.nss_latest; })
+    discord
     #unstable.teams
     #unstable.zoom-us
 
